@@ -1,0 +1,4 @@
+---
+# tasks file for remove_zabbix_agent
+- name: Remove zabbix agent 
+  yum: name=zabbix-agent state=removed

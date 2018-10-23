@@ -1,0 +1,9 @@
+---
+# tasks file for install_zabbix_agent
+- name: Install zabbix agent
+  yum: name=zabbix-agent state=present
+
+- name: Config Zabbix agent
+  lineinfile: dest=/etc/zabbix/zabbix_agentd.conf state=present  regexp='^Server=' line='Server=10.0.0.199'
+- name: Restart Zabbix-agent
+  service: name=zabbix-agent state=restarted enabled=yes

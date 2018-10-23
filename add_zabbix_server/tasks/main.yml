@@ -1,0 +1,24 @@
+---
+# tasks file for add_zabbix_server
+- name: Add Zabbix Hosts
+  local_action:
+    module: zabbix_host
+    server_url: http://10.0.0.199/zabbix/
+    login_user: admin
+    login_password: zabbix
+    host_name: '{{ inventory_hostname }}'
+    host_groups:
+      - rancher
+    link_templates:
+      - Template OS Linux
+    status: enabled
+    state: present
+    interfaces:
+      - type: 1
+        main: 1
+        useip: 1
+        ip: '{{ ansible_host }}'
+        dns: ""
+        port: 10050
+
+
